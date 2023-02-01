@@ -5,12 +5,12 @@ let weeksKpiInp = document.querySelector(".weeks-kpi");
 let monthKpiInp = document.querySelector(".month-kpi");
 let addStudentBtn = document.querySelector(".add-student-btn");
 let closeModalBtn = document.querySelector("#btn-close-modal");
-let studentInpImage = document.querySelector('#student-image');
+let studentInpImage = document.querySelector('.student-image');
 // let studentCategory = document.querySelector('#student-category');
 
 let STUDENTS_API = "http://localhost:8000/students";
 
-//create Srudents
+//create Students
 function createStudent() {
   if (
     !firstNameInp.value.trim() ||
