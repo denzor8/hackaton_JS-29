@@ -6,7 +6,10 @@ body {
 	line-height: 1;
 	font-family: "Sarala", sans-serif;
 	overflow-x: hidden;
-	  background-color: #346285 !important;
+	/* background-color: #346285 !important; */
+	background-image: url("https://www.myclickmagazine.com/wp-content/uploads/2019/02/Photographing_Minimalism_Composition_Negative_Space_by_Dana_Walton_08.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 	overflow-x: hidden !important;
 }
 
@@ -30,4 +33,13 @@ main {
 
 .img-img{
 	width: 5%;
+}
+
+.card{
+
+	transition: 1s; /* Время эффекта */
+}
+
+.card:hover {
+	transform: scale(0.9); /* Увеличиваем масштаб */
 }
