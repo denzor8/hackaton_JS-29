@@ -9,7 +9,7 @@ let studentInpImage = document.querySelector('.student-image');
 let kpiCategory = document.querySelector('.kpi-category');
 // let studentCategory = document.querySelector('#student-category');
 
-let STUDENTS_API = "http://localhost:8000/students";
+let STUDENTS_API = "http://localhost:7000/students";
 
 //create Students
 function createStudent() {
