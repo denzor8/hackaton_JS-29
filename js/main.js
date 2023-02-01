@@ -6,6 +6,7 @@ let monthKpiInp = document.querySelector(".month-kpi");
 let addStudentBtn = document.querySelector(".add-student-btn");
 let closeModalBtn = document.querySelector("#btn-close-modal");
 let studentInpImage = document.querySelector('.student-image');
+let kpiCategory = document.querySelector('.kpi-category');
 // let studentCategory = document.querySelector('#student-category');
 
 let STUDENTS_API = "http://localhost:8000/students";
@@ -30,6 +31,7 @@ function createStudent() {
     weeksKPI: weeksKpiInp.value,
     monthKPI: monthKpiInp.value,
     image: studentInpImage.value,
+    category: kpiCategory.value,
   };
   fetch(STUDENTS_API, {
     method: "POST",
@@ -38,13 +40,13 @@ function createStudent() {
       "Content-Type": "application/json;charset=utf-8",
     },
   });
-  alert("SUCCESS!");
   firstNameInp.value = "";
   lastNameInp.value = "";
   phoneNumberInp.value = "";
   weeksKpiInp.value = "";
   monthKpiInp.value = "";
   studentInpImage.value = '';
+  kpiCategory.value = "";
 
   closeModalBtn.click();
 }
@@ -53,13 +55,15 @@ addStudentBtn.addEventListener("click", createStudent);
 //read
 let currentPage = 1;
 let search = "";
+let category = "";
 
-let studentsList = document.querySelector(".students-list");
 async function render() {
-  let requestAPI = `${STUDENTS_API}?q=${search}&_page=${currentPage}&_limit=3`;
-  if (search !== "") {
-    requestAPI = `${STUDENTS_API}?q=${search}&_limit=3`;
-  }
+  let studentsList = document.querySelector(".students-list");
+  // let requestAPI = `${STUDENTS_API}?q=${search}&_page=${currentPage}&_limit=3`;
+  let requestAPI = `${STUDENTS_API}?q=${search}&category=${category}&_page=${currentPage}&_limit=2`;
+  if (!category) {
+    requestAPI = `${STUDENTS_API}?q=${search}&_page=${currentPage}&_limit=2`;
+  };
   let res = await fetch(requestAPI);
   let data = await res.json();
   studentsList.innerHTML = "";
@@ -72,6 +76,7 @@ async function render() {
       <p class="card-text phone-number-info"> Phone number: ${item.number}</p>
       <p class="card-text weeks-kpi-info"> Weeks KPI: ${item.weeksKPI}</p>
       <p class="card-text month-kpi-info"> Month KPI: ${item.monthKPI}</p>
+      <p class="card-text kpi-category">KPI: ${item.category}</p>
       <a href="#" class="btn btn-success btn-update" data-bs-toggle="modal" data-bs-target="#exampleModal" id="${item.id}">Update</a>
       <a href="#" class="btn btn-danger btn-delete" id="${item.id}">Delete</a>
     </div>
@@ -79,12 +84,28 @@ async function render() {
     `;
   });
   if (data.length === 0) return;
+  addCategoryToDropdownMenu();
   deleteEventStudent();
   addUpdateEvent();
 }
 render();
 
-//delete
+// category logic 
+async function addCategoryToDropdownMenu() {
+  let res = await fetch(STUDENTS_API);
+  let data = await res.json();
+  let categories = new Set(data.map(item => item.category));
+  let categoriesList = document.querySelector('.dropdown-menu');
+  categoriesList.innerHTML = '<li><a class="dropdown-item" href="#">all</a></li>';
+  categories.forEach(item => {
+    categoriesList.innerHTML += `
+        <li><a class="dropdown-item" href="#">${item}</a></li>
+        `;
+  });
+  addClickEventOnDropdownItem();
+};
+
+// delete
 async function deleteStudent(e) {
   let studentId = e.target.id;
   await fetch(`${STUDENTS_API}/${studentId}`, {
@@ -119,7 +140,6 @@ async function addUpdateStudentToForm(e) {
   checkAddAndSaveBtn();
 }
 // addUpdateStudentToForm();
-
 function checkAddAndSaveBtn() {
   if (saveBtn.id) {
     addStudentBtn.setAttribute("style", "display: none;");
@@ -180,15 +200,33 @@ closeModalBtn.addEventListener("click", () => {
   weeksKpiInp.value = "";
   monthKpiInp.value = "";
   studentInpImage.value = "";
+  kpiCategory.value = "";
 });
 
+// filtering category 
+function filterOnCategory(e) {
+  let categoryText = e.target.innerText;
+  if (categoryText === 'all') {
+    category = '';
+  } else {
+    category = categoryText;
+  };
+  render();
+};
+
+function addClickEventOnDropdownItem() {
+  let categoryItems = document.querySelectorAll('.dropdown-item');
+  categoryItems.forEach(item => item.addEventListener('click', filterOnCategory));
+};
+
+
 //search
-requestAPI = `${STUDENTS_API}?q=${search}&_page=${currentPage}&_limit=3`;
+// requestAPI = `${STUDENTS_API}?q=${search}&_page=${currentPage}&_limit=3`;
 let searchInp = document.querySelector("#search-inp");
-console.log(searchInp);
+// console.log(searchInp);
 searchInp.addEventListener("input", () => {
   search = searchInp.value;
-
+  currentPage = 1;
   render();
 });
 
@@ -217,12 +255,12 @@ showPaginationBtns();
 
 prevPageBtn.addEventListener("click", () => {
   currentPage--;
-  render();
   showPaginationBtns();
+  render();
 });
 
 nextPageBtn.addEventListener("click", () => {
   currentPage++;
-  render();
   showPaginationBtns();
+  render();
 });
