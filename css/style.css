@@ -43,3 +43,9 @@ main {
 .card:hover {
 	transform: scale(0.9); /* Увеличиваем масштаб */
 }
+.add-student-btn-active{
+	transition: all 0.9 ease-in-out !important;
+}
+.add-student-btn-active:hover{
+	background-color: #428855 !important;	
+}
