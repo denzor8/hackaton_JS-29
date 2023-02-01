@@ -1,0 +1,63 @@
+{
+  "students": [
+    {
+      "firstName": "Vlad ",
+      "lastName": "Vasilev",
+      "number": "996223774377",
+      "weeksKPI": "3",
+      "monthKPI": "4",
+      "image": "https://img.freepik.com/free-photo/front-view-male-student-dark-t-shirt-yellow-backpack-holding-files-books-smiling-light-blue-wall_140725-46715.jpg?w=2000",
+      "id": 3
+    },
+
+    {
+      "firstName": "Sanat",
+      "lastName": "Abdrasulov",
+      "number": "996223774377",
+      "weeksKPI": "1",
+      "monthKPI": "2",
+      "id": 2
+    },
+    {
+      "id": 1,
+      "firstName": "Helen",
+      "lastName": "Richardson",
+      "number": "996223774377",
+      "weeksKPI": "1",
+      "monthKPI": "2"
+    },
+
+    {
+      "firstName": "Tom",
+      "lastName": "Tomas",
+      "number": "996223774377",
+      "weeksKPI": "6",
+      "monthKPI": "5",
+      "id": 4
+    },
+    {
+      "firstName": "Myrzaiym",
+      "lastName": "Myrzaiymm",
+      "number": "996223774377",
+      "weeksKPI": "2",
+      "monthKPI": "2",
+      "id": 5
+    },
+    {
+      "firstName": "Zamir",
+      "lastName": "Urmat",
+      "number": "996223774377",
+      "weeksKPI": "3",
+      "monthKPI": "1",
+      "id": 6
+    },
+    {
+      "firstName": "Akyl",
+      "lastName": "Kojoyar",
+      "number": "996223774377",
+      "weeksKPI": "5",
+      "monthKPI": "2",
+      "id": 7
+    }
+  ]
+}
