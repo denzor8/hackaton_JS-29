@@ -77,70 +77,31 @@
     </nav>
     <!-- navbar end -->
 
-    <!-- Модальное окно -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Student Info</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Закрыть"
-              id="btn-close-modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input
-              type="text"
-              class="form-control student-first-name m-2"
-              placeholder="First Name"
-            />
-            <input
-              type="text"
-              class="form-control student-last-name m-2"
-              placeholder="Last Name"
-            />
-            <input
-              type="text"
-              class="form-control phone-number m-2"
-              placeholder="Phone Number"
-            />
-            <input
-              type="text"
-              class="form-control weeks-kpi m-2"
-              placeholder="Weeks KPI"
-            />
-            <input
-              type="text"
-              class="form-control month-kpi m-2"
-              placeholder="Month KPI"
-            />
-            <input
-              type="text"
-              class="form-control student-image m-2"
-              placeholder="Image Student"
-            />
-            <!-- <input type="text" class="form-control m-2"id="student-category" placeholder="Category"  /> -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary add-student-btn">
-              Add student
-            </button>
-            <button type="button" class="btn btn-secondary save-changes-btn">
-              Save changes
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+
+		<!-- Модальное окно -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Student Info</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" id="btn-close-modal"></button>
+					</div>
+					<div class="modal-body">
+						<input type="text" class="form-control student-first-name m-2" placeholder="First Name" />
+						<input type="text" class="form-control student-last-name m-2" placeholder="Last Name" />
+						<input type="text" class="form-control phone-number m-2" placeholder="Phone Number" />
+						<input type="text" class="form-control weeks-kpi m-2" placeholder="Weeks KPI" />
+						<input type="text" class="form-control month-kpi m-2" placeholder="Month KPI" />
+						<input type="text" class="form-control student-image m-2" placeholder="Image Student" >
+						<input type="text" class="form-control kpi-category m-2" placeholder="Category KPI "  />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary add-student-btn">Add student</button>
+						<button type="button" class="btn btn-secondary save-changes-btn">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
     <!-- list -->
     <h2 class="list-title">Students List</h2>
