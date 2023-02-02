@@ -19,7 +19,8 @@ function createStudent() {
     !phoneNumberInp.value.trim() ||
     !weeksKpiInp.value.trim() ||
     !monthKpiInp.value.trim() ||
-    !studentInpImage.value.trim()
+    !studentInpImage.value.trim() ||
+    !kpiCategory.value.trim()
   ) {
     alert("Some inputs are empty!");
     return;
@@ -161,6 +162,7 @@ async function saveChangesStudent(e) {
     weeksKPI: weeksKpiInp.value,
     monthKPI: monthKpiInp.value,
     image: studentInpImage.value,
+    kpiCategory.value = studentObj.category;
 
   };
   await fetch(`${STUDENTS_API}/${e.target.id}`, {
