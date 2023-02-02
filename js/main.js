@@ -136,6 +136,7 @@ async function addUpdateStudentToForm(e) {
   weeksKpiInp.value = studentObj.weeksKPI;
   monthKpiInp.value = studentObj.monthKPI;
   studentInpImage.value = studentObj.image;
+  kpiCategory.value = studentObj.category;
 
   saveBtn.setAttribute("id", studentObj.id);
   checkAddAndSaveBtn();
@@ -179,6 +180,7 @@ async function saveChangesStudent(e) {
   weeksKpiInp.value = "";
   monthKpiInp.value = "";
   studentInpImage.value = "";
+  kpiCategory.value = "";
 
   saveBtn.removeAttribute("id");
   render();
@@ -246,7 +248,7 @@ async function showPaginationBtns() {
   let res = await fetch(STUDENTS_API);
   let data = await res.json();
   let students = data.length;
-  let pagesNumber = Math.ceil(students / 3);
+  let pagesNumber = Math.ceil(students / 2);
   if (currentPage == pagesNumber) {
     nextPageBtn.style.display = "none";
   } else {
